@@ -1,6 +1,8 @@
 ### 5-7 수행 내역 캡쳐
 
-![5-7 수행 내역 캡쳐](C:\Users\user\Desktop/폴더구성.png)
+<img width="375" height="497" alt="폴더구성" src="https://github.com/user-attachments/assets/c4e0c958-57dd-473b-8842-0e48d3b29fb1" />
+
+
 
 
 ### 각 섹션의 체크포인트의 답변
