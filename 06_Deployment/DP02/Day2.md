@@ -1,8 +1,21 @@
-### 섹션 1.5 수행내역 캡쳐
 
-### 섹션 2, 3 셀 출력 
+## 섹션 1.5 수행내역 캡쳐
+<img width="632" height="1311" alt="day2_FastAPI" src="https://github.com/user-attachments/assets/bdeeb37e-965f-44c5-9789-7346c21aab9a" />  
 
-### 섹션 5 수행내역 캡쳐
+
+
+## 섹션 2, 3 셀 출력 
+<img width="691" height="615" alt="day2_Section 2_body" src="https://github.com/user-attachments/assets/084c4f4e-2a4b-4354-a8d6-9bcb7106347e" />
+<img width="544" height="755" alt="day2_section2_path_query" src="https://github.com/user-attachments/assets/cfe547d7-3665-4838-ba1c-e84af192f062" />
+<img width="705" height="636" alt="day2_section3_openapi" src="https://github.com/user-attachments/assets/791d543b-74d5-4499-8e3b-32e80190e82f" />
+
+
+## 섹션 5 수행내역 캡쳐
+<img width="1148" height="1926" alt="day2_POST422" src="https://github.com/user-attachments/assets/ea3ea0fc-45b3-4516-a4ed-5a2acd29da4b" />
+<img width="1145" height="1780" alt="day2_POST200" src="https://github.com/user-attachments/assets/b375c5f3-f81b-41cd-9ba5-8e3630986dd4" />
+<img width="1148" height="967" alt="day2_GET200" src="https://github.com/user-attachments/assets/9687a36c-4dc3-404d-80d3-03f3a8ff4050" />
+
+
 
 
 
