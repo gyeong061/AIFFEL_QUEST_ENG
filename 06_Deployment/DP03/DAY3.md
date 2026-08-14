@@ -1,3 +1,4 @@
+<img width="518" height="521" alt="day3" src="https://github.com/user-attachments/assets/97cfa6b4-dd53-4ca1-a155-b4920f26abe3" />
 
 
 
