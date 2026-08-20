@@ -1,6 +1,6 @@
-<img width="1106" height="1910" alt="20260820_133552" src="https://github.com/user-attachments/assets/641e2ce3-14a7-47f1-afc2-6f8de0b6d50f" />
 
-1~4일차 MNIST 이미지를 넣으면 정상 작동하는데 다른 이미지를 넣으면 "API Key가 필요합니다. X-API-Key 헤더를 포함해 주세요." 라고 401 Error: Unauthorized 뜸.
+
+
 
 
 
