@@ -1,3 +1,18 @@
+
+<img width="700" height="360" alt="20260821_121256" src="https://github.com/user-attachments/assets/e0e861d5-f6a8-44e4-94f8-50f5e6a2a0fb" />
+1. [테스트 A] 기본 대화  
+
+<img width="500" height="260" alt="20260821_121213" src="https://github.com/user-attachments/assets/0fe1b5a0-3413-4228-893e-5323df4babac" />
+<img width="500" height="250" alt="20260821_120821" src="https://github.com/user-attachments/assets/ec6dfcce-2ac6-40eb-82c0-29dea9ac23a3" />
+2. [테스트 B] 설정 변경  
+
+<img width="480" height="250" alt="20260821_121040" src="https://github.com/user-attachments/assets/482e1874-c633-418b-93e0-091167af3192" />
+3. [테스트 C] 대화 초기화  
+
+<img width="450" height="390" alt="20260821_120444" src="https://github.com/user-attachments/assets/29b21e8d-520f-47bd-9bd1-f3a626417a48" />
+4. [테스트 D] 인증 실패  
+
+
 ✅ 체크포인트  
 1. Day 5(정형 데이터)와 Day 7(텍스트 생성)에서 전처리가 어떻게 다릅니까?  
 : Day5는 정규화로 Day7은 토크나이저를 사용한다.  
