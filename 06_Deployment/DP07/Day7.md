@@ -2,24 +2,25 @@
 [테스트 A] 기본 대화  
 <img width="1384" height="1044" alt="20260821_120444" src="https://github.com/user-attachments/assets/5a3232c8-e339-416b-9933-e5676ef30573" />  
 : 기본 설정으로 정상 작동확인
-
-
+  
+  
 [테스트 B] 설정 변경  
 <img width="1705" height="1489" alt="20260821_120821" src="https://github.com/user-attachments/assets/e7a3e7d8-b064-41e8-a89f-05507e09cf9b" />  
 <img width="1621" height="749" alt="20260821_121040" src="https://github.com/user-attachments/assets/236b66c1-a645-4a29-9d14-7ac7dadba0e4" />  
 : 좌측 사이드바에서 Temperature 값을 0.1(보수적) 또는 1.5(다양함)로 변경한 뒤 결과 확인  
-
+  
+    
 [테스트 C] 대화 초기화  
 <img width="1470" height="791" alt="20260821_121213" src="https://github.com/user-attachments/assets/379f3c61-61bc-4c9a-b4ce-0f59fef87ca9" />  
 : 사이드바의 '대화 초기화' 버튼을 클릭하여, 화면의 대화 기록이 모두 깨끗하게 지워지는지 확인  
-
-
+  
+  
 [테스트 D] 인증 실패  
 <img width="1443" height="797" alt="20260821_121256" src="https://github.com/user-attachments/assets/d21a6f08-b335-4b1e-a3ff-cc47a8d40f49" />  
 : API Key를 wrong-key로 변경해서 "🔑 인증 실패" 메시지 확인  
-
-
-
+  
+  
+  
 ✅ 체크포인트  
 1. Day 5(정형 데이터)와 Day 7(텍스트 생성)에서 전처리가 어떻게 다릅니까?  
 : Day5는 정규화로 Day7은 토크나이저를 사용한다.  
