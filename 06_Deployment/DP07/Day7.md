@@ -7,7 +7,7 @@
 [테스트 B] 설정 변경  
 <img width="1705" height="1489" alt="20260821_120821" src="https://github.com/user-attachments/assets/e7a3e7d8-b064-41e8-a89f-05507e09cf9b" />  
 <img width="1621" height="749" alt="20260821_121040" src="https://github.com/user-attachments/assets/236b66c1-a645-4a29-9d14-7ac7dadba0e4" />  
-: 좌측 사이드바에서 Temperature 값을 0.1(보수적) 또는 1.5(다양함)로 변경한 뒤 결과 확인  
+: 좌측 사이드바에서 응답다양성(Temperature) 값을 0.1(보수적) 또는 1.5(다양함)로 변경한 뒤 결과 확인  
   
     
 [테스트 C] 대화 초기화  
