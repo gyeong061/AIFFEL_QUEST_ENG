@@ -19,8 +19,8 @@
 <img width="1443" height="797" alt="20260821_121256" src="https://github.com/user-attachments/assets/d21a6f08-b335-4b1e-a3ff-cc47a8d40f49" />  
 : API Key를 wrong-key로 변경해서 "🔑 인증 실패" 메시지 확인  
   
-  
-  
+<br>  
+<br>  
 ✅ 체크포인트  
 1. Day 5(정형 데이터)와 Day 7(텍스트 생성)에서 전처리가 어떻게 다릅니까?  
 : Day5는 정규화로 Day7은 토크나이저를 사용한다.  
