@@ -199,7 +199,8 @@ assert abs(base_score - noisy_score) < 0.1, "노이즈 삽입 시 예측 확률�
 
 - 코드 뼈대 (구현 시작점):
 
-```data.py: LightningDataModule 상속. setup()에서 Tokenizer 적용, train_dataloader() 등에서 num_workers 및 pin_memory=True 설정.
+```
+data.py: LightningDataModule 상속. setup()에서 Tokenizer 적용, train_dataloader() 등에서 num_workers 및 pin_memory=True 설정.
 
 model.py: LightningModule 상속. AutoModelForSequenceClassification 로드 및 training_step, 옵티마이저 설정.
 
