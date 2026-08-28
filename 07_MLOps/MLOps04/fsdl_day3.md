@@ -199,14 +199,14 @@ assert abs(base_score - noisy_score) < 0.1, "노이즈 삽입 시 예측 확률�
 
 - 코드 뼈대 (구현 시작점):
 
-data.py: LightningDataModule 상속. setup()에서 Tokenizer 적용, train_dataloader() 등에서 num_workers 및 pin_memory=True 설정.
+```data.py: LightningDataModule 상속. setup()에서 Tokenizer 적용, train_dataloader() 등에서 num_workers 및 pin_memory=True 설정.
 
 model.py: LightningModule 상속. AutoModelForSequenceClassification 로드 및 training_step, 옵티마이저 설정.
 
 train.py: Trainer 설정 (혼합 정밀도 precision="16-mixed" 적용) 및 학습 루프 실행.
 
 tests/: 위에서 설계한 pytest 기반의 검증 스크립트 작성.
-
+```
 
 5. 코드 예시 참고: 별도 제공되는 "뉴스 분류 프로젝트 코드 예시"를 참고하여, 워크시트에서 설계한 프로젝트의 코드 구조를 구상해 보세요. LightningModule, DataModule, Trainer, test_*.py의 뼈대를 잡는 것부터 시작하면 됩니다.
 
