@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
+# [기존 작업] 이미지 빌드 및 푸시
   build-and-push:
     runs-on: ubuntu-latest
     
@@ -25,3 +26,30 @@ jobs:
         file: ./mlops_serving/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
+
+
+# [추가 작업] GCP VM에 배포
+deploy:
+    needs: build-and-push # 앞의 빌드가 성공해야만 배포 시작
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy to GCP VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_SSH_KEY }}
+          port: 22
+          script: |
+            # 1. Docker 로그인
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+            # 2. 기존 컨테이너 중지 및 삭제
+            docker stop my-app-container || true
+            docker rm my-app-container || true
+            # 3. 최신 이미지 Pull
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
+            # 4. 새 컨테이너 실행
+            docker run -d --name my-app-container -p 80:8000 ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
+            # 5. 미사용 이미지 정리
+            docker image prune -f
