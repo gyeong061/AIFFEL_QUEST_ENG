@@ -153,39 +153,39 @@
 
 - 데이터 기댓값 테스트 (3개):
 
-> ```python
-> # 1. 결측치 테스트 (스모크 테스트)
-> assert df['text'].isnull().sum() == 0, "텍스트 컬럼에 결측치가 있습니다."
-> 
-> # 2. 레이블 유효성 테스트 (느슨한 경계)
-> assert df['label'].isin([0, 1, 2, 3, 4, 5, 6]).all(), "정의되지 않은 카테고리 레이블이 존재합니다."
-> 
-> # 3. 최소 데이터 길이 테스트
-> assert df['text'].str.len().min() >= 10, "10자 미만의 너무 짧은 노이즈 기사가 포함되어 있습니다."
-> > ```
+```python
+# 1. 결측치 테스트 (스모크 테스트)
+assert df['text'].isnull().sum() == 0, "텍스트 컬럼에 결측치가 있습니다."
+
+# 2. 레이블 유효성 테스트 (느슨한 경계)
+assert df['label'].isin([0, 1, 2, 3, 4, 5, 6]).all(), "정의되지 않은 카테고리 레이블이 존재합니다."
+
+# 3. 최소 데이터 길이 테스트
+assert df['text'].str.len().min() >= 10, "10자 미만의 너무 짧은 노이즈 기사가 포함되어 있습니다."
+```
 
 - 암기 테스트 (1개):
 
-> '''Python
-> # 1개 배치에 대한 오버피팅 가능성 검증 (모델 파이프라인 단절 확인)
-> trainer = pl.Trainer(overfit_batches=1, max_epochs=50)
-> trainer.fit(model, train_loader)
-> # 훈련 종료 후 Loss가 0에 가깝게 수렴하는지 assert로 확인
-> > '''
+```python
+# 1개 배치에 대한 오버피팅 가능성 검증 (모델 파이프라인 단절 확인)
+trainer = pl.Trainer(overfit_batches=1, max_epochs=50)
+trainer.fit(model, train_loader)
+# 훈련 종료 후 Loss가 0에 가깝게 수렴하는지 assert로 확인
+```
 
 - 행동 테스트 (2개):
 
-> '''Python
-> # 1. 불변성 테스트 (어미 변경에 대한 강건성)
-> score_a = model.predict("이 기술은 향후 IT 산업을 주도할 것입니다.")
-> score_b = model.predict("이 기술은 향후 IT 산업을 주도할 것이다.")
-> assert score_a == score_b, "어미가 변경되었다고 카테고리 예측이 달라집니다."
-> 
-> # 2. 방향성/강건성 테스트 (무관한 텍스트 추가)
-> base_score = model.predict_proba("금리 인상으로 인한 증시 하락세")
-> noisy_score = model.predict_proba("금리 인상으로 인한 증시 하락세 [광고]구독부탁")
-> assert abs(base_score - noisy_score) < 0.1, "노이즈 삽입 시 예측 확률이 너무 크게
-> > '''
+```python
+# 1. 불변성 테스트 (어미 변경에 대한 강건성)
+score_a = model.predict("이 기술은 향후 IT 산업을 주도할 것입니다.")
+score_b = model.predict("이 기술은 향후 IT 산업을 주도할 것이다.")
+assert score_a == score_b, "어미가 변경되었다고 카테고리 예측이 달라집니다."
+
+# 2. 방향성/강건성 테스트 (무관한 텍스트 추가)
+base_score = model.predict_proba("금리 인상으로 인한 증시 하락세")
+noisy_score = model.predict_proba("금리 인상으로 인한 증시 하락세 [광고]구독부탁")
+assert abs(base_score - noisy_score) < 0.1, "노이즈 삽입 시 예측 확률이 너무 크게
+```
 
 
 3. 병목 예측: 프로파일링 전에, 자신의 프로젝트에서 가장 큰 병목이 무엇일지 가설을 세워 보세요. 그리고 그 가설을 어떻게 검증할 수 있는지 구체적으로 계획하세요.
@@ -213,7 +213,7 @@ tests/: 위에서 설계한 pytest 기반의 검증 스크립트 작성.
 1. DataModule (data.py)
 데이터 로딩 병목 현상을 방지하기 위해 전처리와 병렬 로딩(num_workers, pin_memory)을 담당하는 모듈입니다.
 
-Python
+```python
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
@@ -248,10 +248,12 @@ class NewsDataModule(pl.LightningDataModule):
             pin_memory=True,        # 비동기 전송
             persistent_workers=True # 워커 초기화 오버헤드 방지
         )
+```
+
 2. LightningModule (model.py)
 순전파(Forward)와 손실 함수(Loss), 옵티마이저 등 모델의 핵심 학습 로직을 정의합니다.
 
-Python
+```python
 import pytorch_lightning as pl
 import torch
 from transformers import AutoModelForSequenceClassification
@@ -276,10 +278,12 @@ class NewsClassifier(pl.LightningModule):
     def configure_optimizers(self):
         # OOM 및 성능 최적화를 고려한 AdamW 적용
         return torch.optim.AdamW(self.parameters(), lr=self.lr)
+```
+
 3. Trainer 및 실행부 (train.py)
 작성한 모듈들을 조립하고, OOM 방지 및 빠른 실험을 위한 설정을 주입하여 학습을 실행합니다.
 
-Python
+```python
 import pytorch_lightning as pl
 from model import NewsClassifier
 from data import NewsDataModule
@@ -300,10 +304,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+
 4. 테스트 코드 (tests/test_model.py)
 모델이 훈련 환경에 올라가기 전에 기초 배관이 연결되었는지 확인하는 단위 테스트입니다.
 
-Python
+```python
 import pytest
 import torch
 from model import NewsClassifier
@@ -329,4 +335,6 @@ def test_model_no_nan_output(sample_batch):
     logits = model(sample_batch["input_ids"], sample_batch["attention_mask"])
     
     assert torch.isfinite(logits).all(), "NaN or Inf detected in model output"
+```
+
 위 뼈대 코드를 기반으로 프로젝트의 실제 모델명(Hugging Face 경로)과 커스텀 데이터셋을 교체하면, 설계하신 워크시트 내용대로 즉시 실험(Make it Run)을 시작할 수 있습니다.
