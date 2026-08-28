@@ -21,8 +21,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./mlops-serving
-          file: ./mlops-serving/Dockerfile
+          context: ./mlops_serving
+          file: ./mlops_serving/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
 
@@ -39,21 +39,16 @@ jobs:
           key: ${{ secrets.GCP_SSH_KEY }}
           port: 22
           script: |
-            # 1. Docker 로그인
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-            # 2. 기존 컨테이너 중지 및 삭제
             docker stop my-app-container || true
             docker rm my-app-container || true
 
-            # 3. 최신 이미지 Pull
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
 
-            # 4. 새 컨테이너 실행
             docker run -d \
               --name my-app-container \
               -p 80:8000 \
               ${{ secrets.DOCKERHUB_USERNAME }}/my-ml-app:latest
 
-            # 5. 미사용 이미지 정리
             docker image prune -f
